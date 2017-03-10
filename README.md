@@ -1,10 +1,9 @@
-# Flask-User starter app
+# Tycoon-Prediction app
 
-This code base serves as a great starting point to write your next Flask application  
-(With or without Flask-User)
+This code base serves as a great starting point to write your own online prediction market
 
 ## Developer benefits
-* Tested on Python 2.7, 3.3, and 3.4
+* Tested on Python 3.5
 * Well organized directories with lots of comments
   * app/models
   * app/startup
@@ -20,21 +19,21 @@ This code base serves as a great starting point to write your next Flask applica
 
 
 ## Cloning the code base
-We assume that you have `git` and `virtualenvwrapper` installed.
+We assume that you have `git` and `anaconda3` installed.
 
     # Clone the code repository into ~/dev/my_app
     mkdir -p ~/dev
     cd ~/dev
-    git clone https://github.com/lingthio/Flask-User-starter-app.git my_app
+    git clone https://github.com/sciguy137/Flask-User-starter-app my_app
 
-    # Create the 'my_app' virtual environment
-    mkvirtualenv -p PATH/TO/PYTHON my_app
+    # Install the required python packages (see requirements.txt)
 
-    # Install required Python packages
-    cd ~/dev/my_app
-    workon my_app
-    pip install -r requirements.txt
-    
+    # Create the 'tycoon' virtual environment
+    conda create -n tycoon flask-user flask-migrate pytest-cov
+
+    # Activate the 'tycoon' virtual environment
+    cd ~/git/home/tycoon
+    source activate tycoon   
     
 ## Configuring the app
 

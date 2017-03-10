@@ -5,15 +5,15 @@
 Flask==0.12
 
 # Flask Packages
-Flask-Login==0.4.0
-Flask-Migrate==2.0.2
+Flask-Login==0.3.2
+Flask-Migrate==1.5.1
 Flask-Script==2.0.5
 Flask-SQLAlchemy==2.1
-Flask-User==0.6.11
-Flask-WTF==0.13.1
+Flask-User==0.6.8
+Flask-WTF==0.12
 
 # Development tools
-pytest==3.0.5
+pytest==3.0.6
 pytest-flask==0.10.0
-pytest-cov==2.4.0
+pytest-cov==2.3.1
 
