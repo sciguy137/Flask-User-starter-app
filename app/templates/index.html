@@ -6,12 +6,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="description">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
         <title>Prediction Tycoon</title>
 
         <!-- Bootstrap CSS and JS -->
-        <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -19,14 +20,21 @@
             <script src="{{ url_for('static', filename='bootstrap/js/respond.min.js') }}"></script>
         <![endif]-->
 
-        <!-- Application specific CSS-->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+        <!-- Custom CSS-->
+        <link rel="stylesheet" href="static/css/app.css">
+
+        <!-- Morris Charts CSS -->
+        <link href="static/css/plugins/morris.css" rel="stylesheet">
+
     </head>
-    <body style="background:url({{'static/img/BellagioLV.jpg'}});">
+
+    <body>
         {% block body %}
+
         <!-- Application specific HTML -->
-        <div id="header-div" class="clearfix with-margins">
-            <div class="pull-left"><a href="{{ url_for('home_page') }}"><span class="header-title">{{ user_manager.app_name }}</span></a></div>
+        <div id="header-div" class="clearfix with-margins"> 
+            <div class="pull-left"><a href="{{ url_for('home_page') }}"><span class="hea
+der-title">{{ user_manager.app_name }}</span></a></div>
             <div class="pull-right">
                 {% if current_user.is_authenticated %}
                     <a href="{{ url_for('user_profile_page') }}">{{ current_user.first_name or current_user.user_auth.username }}</a>
@@ -43,6 +51,37 @@
             &nbsp; | &nbsp; <a href="{{ url_for('user_page') }}">User</a>
             &nbsp; | &nbsp; <a href="{{ url_for('admin_page') }}">Admin</a>
         </div>
+
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Prediction Tycoon</h1>
+                        <h3>Welcome to Prediction Tycoon!</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="{{ url_for('home_page') }}" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Home</span></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">User</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Admin</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+<!-- /.intro-header -->
+
         <hr class="no-margins"/>
 
         <div id="main-div" class="with-margins">
