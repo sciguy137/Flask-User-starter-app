@@ -5,4 +5,44 @@
 
 <p>Welcome to the Prediction Tycoon trading page!</p>
 
+<form action="{{ url_for('user_page') }}" method="POST">
+<!--  {{ csrf_input }} -->
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> 
+  <table>
+    <tr>
+      <td>
+        <label>Select Stock: </label>
+        <select name="option" width="300px">
+          {% for x in stock_list %}
+            <option value="{{ x }}"{% if loop.first %} SELECTED{% endif %}>{{ x }}</option>
+          {% endfor %}
+        </select>
+      </td>
+      <td>
+        <label>Select Bid or Ask? </label>
+        <select name="option" width="300px">
+          {% for x in bid_ask %}
+            <option value="{{ x }}"{% if loop.first %} SELECTED{% endif %}>{{ x }}</option> 
+          {% endfor %}
+        </select>
+      </td	  
+    </tr>
+    <tr>
+      <td>
+        <p>Price <input type = "text" name = "Price" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Quantity <input type ="text" name = "Quantity" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><input type = "submit" value = "Submit" /></p>
+      </td>
+    </tr>
+  </table>
+</form>
+      
 {% endblock %}

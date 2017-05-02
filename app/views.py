@@ -2,7 +2,6 @@
 #
 # Authors: Ling Thio <ling.thio@gmail.com>
 
-
 from flask import redirect, render_template, render_template_string, Blueprint
 from flask import request, url_for
 from flask_user import current_user, login_required, roles_accepted
@@ -14,13 +13,13 @@ from app.models import UserProfileForm
 def home_page():
     return render_template('pages/home_page.html')
 
-
 # The User page is accessible to authenticated users (users that have logged in)
-@app.route('/user')
+@app.route('/user', methods=['GET', 'POST'])
 @login_required  # Limits access to authenticated users
 def user_page():
-    return render_template('pages/user_page.html')
-
+    return render_template('pages/user_page.html',
+                            stock_list = ['Stock1','Stock2','Stock3'],
+                            bid_ask = ['Bid','Ask'])
 
 # The Admin page is accessible to users with the 'admin' role
 @app.route('/admin')

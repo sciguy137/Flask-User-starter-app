@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-        
+        <!-- These 3 meta tags MUST come first -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <!-- These 3 meta tags MUST come first -->
 
-        <title>Prediction Tycoon</title>
+        <title>Flask-User Starter App</title>
 
         <!-- Bootstrap CSS and JS -->
-        <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -20,19 +18,13 @@
             <script src="{{ url_for('static', filename='bootstrap/js/respond.min.js') }}"></script>
         <![endif]-->
 
-        <!-- Custom CSS-->
-        <link rel="stylesheet" href="static/css/app.css">
-
-        <!-- Morris Charts CSS -->
-        <link href="static/css/plugins/morris.css" rel="stylesheet">
-
+        <!-- Application specific CSS-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
     </head>
-
     <body>
         {% block body %}
-
         <!-- Application specific HTML -->
-        <div id="header-div" class="clearfix with-margins"> 
+        <div id="header-div" class="clearfix with-margins">
             <div class="pull-left"><a href="{{ url_for('home_page') }}"><span class="header-title">{{ user_manager.app_name }}</span></a></div>
             <div class="pull-right">
                 {% if current_user.is_authenticated %}
@@ -44,37 +36,11 @@
                 {% endif %}
             </div>
         </div>
-
-    <div class="intro-header">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        <h1>Prediction Tycoon</h1>
-                        <h3>Welcome to Prediction Tycoon!</h3>
-                        <hr class="intro-divider">
-                        <ul class="list-inline intro-social-buttons">
-                            <li>
-                                <a href="{{ url_for('home_page') }}" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Home</span></a>
-                            </li>
-                            <li>
-                                <a href="{{ url_for('user_page') }}" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">User</span></a>
-                            </li>
-                            <li>
-                                <a href="{{ url_for('admin_page') }}" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Admin</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+        <div class="with-margins">
+            <a href="{{ url_for('home_page') }}">Home</a>
+            &nbsp; | &nbsp; <a href="{{ url_for('user_page') }}">User</a>
+            &nbsp; | &nbsp; <a href="{{ url_for('admin_page') }}">Admin</a>
         </div>
-        <!-- /.container -->
-
-    </div>
-<!-- /.intro-header -->
-
         <hr class="no-margins"/>
 
         <div id="main-div" class="with-margins">
@@ -102,8 +68,8 @@
         <br/>
         <hr class="no-margins"/>
         <div id="footer-div" class="clearfix with-margins">
-            <div class="pull-left">{{ user_manager.app_name }} v0.0.1</div>
-            <div class="pull-right">&copy; 2017 Frank Bentrem</div>
+            <div class="pull-left">{{ user_manager.app_name }} v1.0</div>
+            <div class="pull-right">&copy; 2014 MyCorp</div>
         </div>
 
         <!-- Bootstrap JS -->

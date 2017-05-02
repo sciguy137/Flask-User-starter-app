@@ -9,11 +9,18 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import UserManager, SQLAlchemyAdapter
-from flask_wtf.csrf import CsrfProtect
+from flask_wtf.csrf import CSRFProtect, ValidationError
 
 app = Flask(__name__)           # The WSGI compliant web application object
 db = SQLAlchemy()               # Setup Flask-SQLAlchemy
 manager = Manager(app)          # Setup Flask-Script
+csrf = CSRFProtect(app)         # Setup CSRF Protection
+
+csrf.init_app(app)
+
+@app.errorhandler(ValidationError)
+def handle_csrf_error(e):
+    return render_template('csrf_error.html', reason=e.description), 400
 
 # Initialize Flask Application
 def init_app(app, extra_config_settings={}):
@@ -44,8 +51,8 @@ def init_app(app, extra_config_settings={}):
     # Setup Flask-Mail
     mail = Mail(app)
 
-    # Setup WTForms CsrfProtect
-    CsrfProtect(app)
+    # Setup WTForms CSRFProtect
+    CSRFProtect(app)
 
     # Define bootstrap_is_hidden_field for flask-bootstrap's bootstrap_wtf.html
     from wtforms.fields import HiddenField
